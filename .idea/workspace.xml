@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36f4638f-5add-46c7-9910-e7a0182cae22" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Frame.java" afterPath="$PROJECT_DIR$/src/Frame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="2048.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,16 +36,15 @@
       <file leaf-file-name="Frame.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Frame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="50" column="17" selection-start-line="50" selection-start-column="17" selection-end-line="50" selection-end-column="17" />
+            <state relative-caret-position="1023">
+              <caret line="163" column="32" selection-start-line="163" selection-start-column="32" selection-end-line="163" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#Frame#0;class#Frame#0" expanded="false" />
                 <element signature="method#pressUp#0;class#Frame#0" expanded="false" />
-                <element signature="method#pressDown#0;class#Frame#0" expanded="false" />
                 <element signature="method#pressLeft#0;class#Frame#0" expanded="false" />
                 <element signature="method#pressRight#0;class#Frame#0" expanded="false" />
                 <element signature="method#keylist#0;class#Frame#0" expanded="false" />
-                <element signature="method#compare#0;class#Frame#0" expanded="false" />
                 <element signature="method#rndcoord#0;class#Frame#0" expanded="false" />
                 <element signature="method#boolvalue#0;class#Frame#0" expanded="false" />
                 <element signature="method#genStart#0;class#Frame#0" expanded="false" />
@@ -527,7 +526,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -550,12 +549,11 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#Frame#0;class#Frame#0" expanded="false" />
             <element signature="method#pressUp#0;class#Frame#0" expanded="false" />
-            <element signature="method#pressDown#0;class#Frame#0" expanded="false" />
             <element signature="method#pressLeft#0;class#Frame#0" expanded="false" />
             <element signature="method#pressRight#0;class#Frame#0" expanded="false" />
             <element signature="method#keylist#0;class#Frame#0" expanded="false" />
-            <element signature="method#compare#0;class#Frame#0" expanded="false" />
             <element signature="method#rndcoord#0;class#Frame#0" expanded="false" />
             <element signature="method#boolvalue#0;class#Frame#0" expanded="false" />
             <element signature="method#genStart#0;class#Frame#0" expanded="false" />
@@ -644,16 +642,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Frame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="50" column="17" selection-start-line="50" selection-start-column="17" selection-end-line="50" selection-end-column="17" />
+        <state relative-caret-position="1023">
+          <caret line="163" column="32" selection-start-line="163" selection-start-column="32" selection-end-line="163" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#Frame#0;class#Frame#0" expanded="false" />
             <element signature="method#pressUp#0;class#Frame#0" expanded="false" />
-            <element signature="method#pressDown#0;class#Frame#0" expanded="false" />
             <element signature="method#pressLeft#0;class#Frame#0" expanded="false" />
             <element signature="method#pressRight#0;class#Frame#0" expanded="false" />
             <element signature="method#keylist#0;class#Frame#0" expanded="false" />
-            <element signature="method#compare#0;class#Frame#0" expanded="false" />
             <element signature="method#rndcoord#0;class#Frame#0" expanded="false" />
             <element signature="method#boolvalue#0;class#Frame#0" expanded="false" />
             <element signature="method#genStart#0;class#Frame#0" expanded="false" />
