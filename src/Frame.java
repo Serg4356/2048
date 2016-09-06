@@ -48,6 +48,7 @@ public class Frame extends JFrame {
 
     //comparator of array values
     //up button
+    //testing git
     public static String[][] pressUp(String[][] data){
         outer: for(int y = 0; y<data[0].length;y++){
             for(int i = 0; i< data.length; i++){
