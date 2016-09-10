@@ -1,5 +1,6 @@
 import com.sun.org.apache.xalan.internal.xslt.Process;
 
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.Label;
@@ -25,7 +26,7 @@ public class Frame extends JFrame {
         for(int i = 0;i< Constants.FIELD_SIZE;i++){
             for(int y = 0; y<Constants.FIELD_SIZE;y++){
                 data[i][y] = "0";
-                labelarr[i][y] = new MyLabel(i, y, data[i][y]);
+                labelarr[i][y] = new MyLabel(i, y, data[i][y], Color.yellow);
                 panel.add(labelarr[i][y]);
             }
         }
@@ -49,6 +50,7 @@ public class Frame extends JFrame {
     //comparator of array values
     //up button
     //testing git
+    //Not in use anymore!!
     public static String[][] pressUp(String[][] data){
         outer: for(int y = 0; y<data[0].length;y++){
             for(int i = 0; i< data.length; i++){
@@ -111,10 +113,95 @@ public class Frame extends JFrame {
         return data;
     }
 
-    //joins KeyEvent to Frame
+    //new algorithm
+    //compare vector
+    public static String[] compare(String[] initArr){
+        int stopConst = 0;
+        outer: for(int i = 0; i<initArr.length; i++){
+            try {
+                for (int y = i; y > stopConst; y--) {
+                    int curPosition = y;
+                    //System.out.println("значение: " + initArr[curPosition]);
+                    String curValue = initArr[curPosition];
+                    if (curValue.equals("0")) {
+                        continue outer;
+                    } else if (initArr[curPosition - 1].equals(curValue)) {
+                        initArr[curPosition - 1] = Integer.toString(Integer.parseInt(initArr[curPosition - 1]) * 2);
+                        initArr[curPosition] = "0";
+                        stopConst = i-1;
+                    } else if (initArr[curPosition - 1].equals("0")) {
+                        initArr[curPosition - 1] = curValue;
+                        initArr[curPosition] = "0";
+                    } else if (!initArr[curPosition - 1].equals("0")) {
+                        continue outer;
+                    }
+                }
+            } catch (IndexOutOfBoundsException e){ continue outer;}
+        }
+        return initArr;
+    }
+    //compare whole array
+    public static String[][] arrCompare(String[][] arr, String direction){
+
+        String[] currArr = new String[arr.length];
+        switch (direction){
+            case "Up":
+                for(int y = 0; y<arr.length; y++) {
+                    for (int i = 0; i < arr.length; i++) {
+                        currArr[i] = arr[i][y];
+                    }
+                    currArr = compare(currArr);
+                    for (int i = 0; i < arr.length; i++) {
+                        arr[i][y] = currArr[i];
+                    }
+                }
+                break;
+            case "Down":
+                for(int y = 0; y<arr.length; y++) {
+                    for (int i = arr.length-1; i >= 0; i--) {
+                        currArr[arr.length-1-i] = arr[i][y];
+                    }
+                    currArr = compare(currArr);
+                    for (int i = arr.length-1; i >= 0; i--) {
+                        arr[i][y] = currArr[arr.length-1-i];
+                    }
+                }
+                break;
+            case "Left":
+                for(int y = 0; y<arr.length; y++) {
+                    for (int i = 0; i < arr.length; i++) {
+                        currArr[i] = arr[y][i];
+                    }
+                    currArr = compare(currArr);
+                    for (int i = 0; i < arr.length; i++) {
+                        arr[y][i] = currArr[i];
+                    }
+                }
+                break;
+            case "Right":
+                for(int y = 0; y<arr.length; y++) {
+                    for (int i = arr.length-1; i >= 0; i--) {
+                        currArr[arr.length-1-i] = arr[y][i];
+                    }
+                    currArr = compare(currArr);
+                    for (int i = arr.length-1; i >= 0; i--) {
+                        arr[y][i] = currArr[arr.length-1-i];
+                    }
+                }
+                break;
+        }
+        return arr;
+    }
+
+    //joins KeyEvent to Frame -- rewrited
     public void keylist(){
         button.addKeyListener(new KeyAdapter() {
             public void keyReleased(KeyEvent e) {
+                arrCompare(data,e.getKeyText(e.getKeyCode()));
+                genStart();
+                refreshtable();
+
+                /** not in use anymore, previous code version
                 switch (e.getKeyText(e.getKeyCode())){
                     case "Up":
                         pressUp(data);
@@ -137,6 +224,7 @@ public class Frame extends JFrame {
                         refreshtable();
                         break;
                     }
+                 */
                 }
             });
     }
@@ -213,21 +301,25 @@ public class Frame extends JFrame {
             score += Integer.parseInt(data[i][y]);
             }
         }
-        JOptionPane.showConfirmDialog(null, "Warning, no empty cell left", "Warning", JOptionPane.PLAIN_MESSAGE);
+        JOptionPane.showConfirmDialog(null, "No empty cell left", "Warning", JOptionPane.PLAIN_MESSAGE);
         JOptionPane.showConfirmDialog(null, "Your score is: " + score, "SCORE", JOptionPane.PLAIN_MESSAGE);
         System.exit(0);
     }
     }
 
     // updates labels in Frame with new values of data array
+    // added color??????
     public void refreshtable(){
         for(int i = 0;i< Constants.FIELD_SIZE;i++){
             for(int y = 0; y< Constants.FIELD_SIZE;y++){
                 String z = data[i][y];
                 if(z.equals("0")) {
                     labelarr[i][y].setText("");
+                    labelarr[i][y].labelColor(labelarr[i][y].value);
+                    System.out.println(labelarr[i][y].getBackground());
                 } else {
                     labelarr[i][y].setText(data[i][y]);
+                    labelarr[i][y].labelColor(labelarr[i][y].value);
                 }
             }
     }}
