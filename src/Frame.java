@@ -24,7 +24,7 @@ public class Frame extends JFrame {
         panel = new JPanel(new GridLayout(Constants.FIELD_SIZE,Constants.FIELD_SIZE,6,3));
         for(int i = 0;i< Constants.FIELD_SIZE;i++){
             for(int y = 0; y<Constants.FIELD_SIZE;y++){
-                data[i][y] = "";
+                data[i][y] = "0";
                 labelarr[i][y] = new MyLabel(i, y, data[i][y]);
                 panel.add(labelarr[i][y]);
             }
@@ -144,21 +144,21 @@ public class Frame extends JFrame {
     // compare two array values
     public static String[] compare(String firstx, String secondx){
         String result[] = new String[2];
-        if(firstx.equals("")&&secondx.equals("")){
-            result[0] = "";
-            result[1] = "";
+        if(firstx.equals("0")&&secondx.equals("0")){
+            result[0] = "0";
+            result[1] = "0";
 
-        } else if(firstx.equals("")){
+        } else if(firstx.equals("0")){
             result[0] = secondx;
-            result[1] = "";
+            result[1] = "0";
 
-        } else if(secondx.equals("")){
+        } else if(secondx.equals("0")){
             result[0] = firstx;
-            result[1] = "";
+            result[1] = "0";
 
         } else if(firstx.equals(secondx)) {
             result[0] = Integer.toString(Integer.parseInt(firstx) + Integer.parseInt(secondx));
-            result[1] = "";
+            result[1] = "0";
         } else {
             result[0] = firstx;
             result[1] = secondx;
@@ -184,19 +184,23 @@ public class Frame extends JFrame {
     // generates 1 cell value, counts empty cells, shows score before exit
     public void genStart(){
         Boolean emptyExist = true;
+        int emptyCellsNumber = 0;
         int score = 0;
     for(int y = 0; y<data[0].length;y++) {
         for (int i = 0; i < data.length; i++) {
-            if (data[i][y] == "") {
-                emptyExist = true;
-            } else {
-                emptyExist = false;
-            }
+            if (data[i][y] == "0") emptyCellsNumber+=1;
         }
     }
+
+    if(emptyCellsNumber==0){
+        emptyExist = false;
+    } else {
+        emptyExist = true;
+    }
+
     if(emptyExist) {
         int x = rndcoord(), y = rndcoord();
-        if(data[x][y]=="") {
+        if(data[x][y]=="0") {
 
             data[x][y] = boolvalue();
 
@@ -219,7 +223,12 @@ public class Frame extends JFrame {
     public void refreshtable(){
         for(int i = 0;i< Constants.FIELD_SIZE;i++){
             for(int y = 0; y< Constants.FIELD_SIZE;y++){
-                labelarr[i][y].setText(data[i][y]);
+                String z = data[i][y];
+                if(z.equals("0")) {
+                    labelarr[i][y].setText("");
+                } else {
+                    labelarr[i][y].setText(data[i][y]);
+                }
             }
     }}
 
