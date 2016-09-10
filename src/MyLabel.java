@@ -21,7 +21,6 @@ public class MyLabel extends JLabel {
         }
         Border solidBorder = BorderFactory.createLineBorder(Color.white, 1);
         setText(value);
-
         setOpaque(true);
         setHorizontalAlignment(CENTER);
         setBorder(solidBorder);
@@ -34,32 +33,34 @@ public class MyLabel extends JLabel {
     public void setColor(Color color){
         this.myColor = color;
         this.setBackground(color);
+        setOpaque(true);
     }
-    public void labelColor(String value){
-        Color labelColor = null;
+    public static Color labelColor(String value){
+        Color newColor = null;
             if(value.equals("")) {
             } else if(value.equals("2")) {
                 System.out.println("Color exist");
-                this.setColor(new Color(220,220,220));
+                newColor = (new Color(220,220,220));
             } else if(value.equals("4")) {
-                this.setColor(new Color(100, 149, 237));
+                newColor = (new Color(100, 149, 237));
             } else if(value.equals("8")) {
-                this.setColor(new Color(123, 104, 238));
+                newColor = (new Color(123, 104, 238));
             } else if(value.equals("16")) {
-                this.setColor(new Color(135, 206, 235));
+                newColor = (new Color(135, 206, 235));
             } else if(value.equals("32")) {
-                this.setColor(new Color(173, 255, 47));
+                newColor = (new Color(173, 255, 47));
             } else if(value.equals("64")) {
-                this.setColor(new Color(189, 183, 107));
+                newColor = (new Color(189, 183, 107));
             } else if(value.equals("128")) {
-                this.setColor(new Color(218, 165, 32));
+                newColor = (new Color(218, 165, 32));
             } else if(value.equals("512")) {
-                this.setColor(new Color(205, 92, 92));
+                newColor = (new Color(205, 92, 92));
             } else if(value.equals("1024")) {
-                this.setColor(new Color(178, 34, 34));
+                newColor = (new Color(178, 34, 34));
             } else {
-                this.setColor(Color.white);
+                newColor = (Color.white);
             }
 
+        return newColor;
     }
 }

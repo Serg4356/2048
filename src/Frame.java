@@ -26,7 +26,7 @@ public class Frame extends JFrame {
         for(int i = 0;i< Constants.FIELD_SIZE;i++){
             for(int y = 0; y<Constants.FIELD_SIZE;y++){
                 data[i][y] = "0";
-                labelarr[i][y] = new MyLabel(i, y, data[i][y], Color.yellow);
+                labelarr[i][y] = new MyLabel(i, y, data[i][y], Constants.DEFAULT_COLOR);
                 panel.add(labelarr[i][y]);
             }
         }
@@ -317,8 +317,11 @@ public class Frame extends JFrame {
                     labelarr[i][y].setText("");
                     labelarr[i][y].labelColor(labelarr[i][y].value);
                     System.out.println(labelarr[i][y].getBackground());
+                    labelarr[i][y].setBackground(Constants.DEFAULT_COLOR);
                 } else {
                     labelarr[i][y].setText(data[i][y]);
+                    labelarr[i][y].value = data[i][y];
+                    labelarr[i][y].setBackground(MyLabel.labelColor(labelarr[i][y].value));
                     labelarr[i][y].labelColor(labelarr[i][y].value);
                 }
             }
