@@ -128,7 +128,7 @@ public class Frame extends JFrame {
                     } else if (initArr[curPosition - 1].equals(curValue)) {
                         initArr[curPosition - 1] = Integer.toString(Integer.parseInt(initArr[curPosition - 1]) * 2);
                         initArr[curPosition] = "0";
-                        stopConst = i-1;
+                        stopConst = y;
                     } else if (initArr[curPosition - 1].equals("0")) {
                         initArr[curPosition - 1] = curValue;
                         initArr[curPosition] = "0";
